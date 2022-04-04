@@ -16,4 +16,5 @@ To avoid this, everytime we are updating some property, we use ...state before i
 
 This is just one way of dealing with state on an object, based on the old react paradigm. 
 
-
+### The better way
+The better way to update state on multiple object properties, is to simply use the useState() hook multiple times, as per the recommendation of the official documentation. This effectively solves the problem, and cleans up the mess of tracking the state in one variable, while  it can be split in multiple variables. 
