@@ -1,10 +1,14 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 
 function App() {
-    useState(false);
+    const [activated, setActivated] = useState(false);
+    console.log(activated);
+    const buttonText = activated? 'Active' : 'Inactive';
+
+    const onClick = () => setActivated(!activated)
     return(
-        <button>My text</button>
+        <button onClick={onClick}>{buttonText}</button>
     )
 }
 

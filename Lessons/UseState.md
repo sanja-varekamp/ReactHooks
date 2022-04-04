@@ -1,6 +1,6 @@
 Use state() is a function that returns two values: 
-    * The initial value of the state
-    * A function that updates the initial value of the state
+    * The initial value of the state (state variable)
+    * A function that updates the initial value of the state (state update function)
 So we can think of them as a getter and a setter.
 
 ### Definition of getters and setters in JS
