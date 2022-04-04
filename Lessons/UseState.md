@@ -8,3 +8,12 @@ So we can think of them as a getter and a setter.
 
 ###One important caveat in the invocation of useState(): 
 it can NOT be called in a conditional! It can only be used in the main body of the function. 
+
+###useState() hook with an Object Argument IMPORTANT TO KNOW!
+When updating the state of only one property of an object, there is a catch: unlike the class based state which MERGES the object, hooks are rewriting it; therefore, it can override the initial state of other properties of the object and return undefined. 
+
+To avoid this, everytime we are updating some property, we use ...state before it, as to ensure the merging of the new state of the property we are updating, and the other properties which are not changed. 
+
+This is just one way of dealing with state on an object, based on the old react paradigm. 
+
+
