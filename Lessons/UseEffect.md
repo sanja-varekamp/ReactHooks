@@ -9,3 +9,11 @@ The useEffect runs its function right after:
 2. right after the component updates/rerenders;
 3. just before it unmounts from the DOM. 
 
+### the 'teardown'
+The way useEffect enacts the componentWillUnmount, is by returning a function INSIDE the side effect function. Inside of that return function, is where the logic for tidying up lives.
+
+###IMPORTANT NOTE: useEffect, first, runs the side effect function, right after render. However on re-render, it first runs the return function (the clean up function), THEN runs again with the side effect function. So React cleans up effects from the previous render before running the effects again. 
+
+
+
+
