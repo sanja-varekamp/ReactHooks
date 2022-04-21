@@ -1,24 +1,21 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 function App() {
-    const [city, setCity] = useState('');
-    const [country, setCountry] = useState('')
-    const handleCityChange = (event) => setCity(event.target.value)
-    const handleCountryChange = (event) => setCountry(event.target.value)
+const [count, setCount] = useState(0)
+    const handleIncrease = () => setCount(count + 1)
+    const handleDecrease = () => setCount(count -1)
 
-    return (
-        <form>
-            <div>
-                <input type="text" placeholder="City" value={city} onChange={handleCityChange} />
-            </div>
+    useEffect(() => {
+        console.log(`I'm inside the useEffect function. The current count is ${count}`)
+    })
 
-            <div>
-                <input type="text" placeholder="Country" value={country} onChange={handleCountryChange} />
-            </div>
-
-            <div>You live in {`${city}, ${country}`}</div>
-        </form>
+    return(
+        <div>
+            <button onClick={handleIncrease}>Increase</button>
+            <button onClick={handleDecrease}>Decrease</button>
+            <h1>{ count }</h1>
+        </div>
     )
 }
 
