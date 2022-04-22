@@ -6,12 +6,12 @@ function Counter() {
     const handleDecrease = () => setCount(count -1)
 
     useEffect(() => {
-        console.log(`I'm inside the useEffect function. The current count is ${count}`)
+        console.log(`I'm inside the useEffect function. I will only run once upon mounting. The current count is ${count}`)
 
         return() => {
-            console.log(`I'm removing anything that was set up above. The last count was ${count}`)
+            console.log(`I'm removing anything that was set up above. I will only run when component is being unmounted. The last count was ${count}`)
         }
-    })
+    }, [])
 
     return(
         <div>

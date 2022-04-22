@@ -19,4 +19,9 @@ In the class based react components, the render method, always runs first, and c
 ###componentWillUnmount() {}
 It's invoked just before a component is removed from the DOM. It's set up to reverse everything that has been set up in componentDidMount(). The state should never be called in componentWillUnmount, because the component is about to be removed. It's the appropriate place to tidy up, just before the component disappears from the DOM. 
 
-### The useEffectHook()
+### The useEffectHook() arguments in depth
+The first argument of the hook is the function, which represents the 'effect'. That function can return a function, which will represent the 'teardown'. 
+
+In order to control the behavior od useEffect, we can add a second argument to it, which is an empty array []. By adding the second argument, useEffect stops rerendering on every state change. So it only runs once, as it should after the initial render. After that, it holds the return teardown function, until it is ready to unmount. With an empty array as a second argument it essentially only mounts, and dismounts and has no behavior in the middle which would normally get triggered by a rerender.  
+
+How does the second argument work? 
