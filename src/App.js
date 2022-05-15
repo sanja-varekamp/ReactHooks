@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 
 function Counter() {
     const [count, setCount] = useState(0)
+    const [color, setColor] = useState('salmon')
     const handleIncrease = () => setCount(count + 1)
     const handleDecrease = () => setCount(count -1)
 
@@ -11,13 +12,19 @@ function Counter() {
         return() => {
             console.log(`I'm removing anything that was set up above. I will only run when component is being unmounted. The last count was ${count}`)
         }
-    }, [])
+    }, [count])
+
+    function handleColorChange() {
+        const nextColor = color === 'salmon' ? 'gold' : 'salmon'
+        setColor(nextColor)
+    }
 
     return(
         <div>
             <button onClick={handleIncrease}>Increase</button>
+            <button onClick={handleColorChange}>Change color</button>
             <button onClick={handleDecrease}>Decrease</button>
-            <h1>{ count }</h1>
+            <h1 style={{color}}>{ count }</h1>
         </div>
     )
 }

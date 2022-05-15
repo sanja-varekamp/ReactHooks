@@ -22,6 +22,11 @@ It's invoked just before a component is removed from the DOM. It's set up to rev
 ### The useEffectHook() arguments in depth
 The first argument of the hook is the function, which represents the 'effect'. That function can return a function, which will represent the 'teardown'. 
 
-In order to control the behavior od useEffect, we can add a second argument to it, which is an empty array []. By adding the second argument, useEffect stops rerendering on every state change. So it only runs once, as it should after the initial render. After that, it holds the return teardown function, until it is ready to unmount. With an empty array as a second argument it essentially only mounts, and dismounts and has no behavior in the middle which would normally get triggered by a rerender.  
+In order to control the behavior od useEffect, we can add a second argument to it, which is an empty array []. By adding the second argument, useEffect stops rerendering on every state change. So it only runs once, as it should after the initial render. After that, it holds the return teardown function, until it is ready to unmount. With an empty array as a second argument it essentially only mounts, and has no behavior in the middle which would normally get triggered by a rerender. It holds the teardown back. 
 
-How does the second argument work? 
+###How does the second argument work?
+
+Using an empty array as a second argument, we effectively prevent the hook to rerender of every state change. However, we might want it to actually rerender on some state change (for example, we have 15 state variables, and we want to keep track of some of those). In that case, we put those state variables in the array, and only on change of that particular state, useEffect will rerender fully (together with the teardown).   
+
+Having the empty array as a second argument, overrides the default behavior of the hook, to keep track of all of the state (variables), and to rerender every time. 
+
