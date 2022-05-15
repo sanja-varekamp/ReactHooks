@@ -1,30 +1,36 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useContext, createContext } from "react";
 
-
+const NameContext = createContext()
 
 function App() {
-    const [userText, setUserText] = useState('')
+    const [name, setName] = useState('Billy Shakespeare');
 
-    function handleUserKeyPress(event) {
-        const { key, keyCode } = event
-        if (keyCode === 32 || (keyCode >= 65 && keyCode <= 90)) {
-            setUserText(`${userText}${key}`)
-        }
-    }
+ return (
+     <NameContext.Provider value={name}>
+       <Child />
+     </NameContext.Provider>
+ )
+}
 
-
-    useEffect(() => {
-        window.addEventListener('keydown', handleUserKeyPress)
-        return window.removeEventListener('keydown', handleUserKeyPress)
-    })
-    return(
-        <div>
-            <h1> Fell free to type! Your text will show up below!</h1>
-            <blockquote>
-                {userText}
-            </blockquote>
-        </div>
+function Child() {
+    return (
+        <section className="child">
+            <Grandchild />
+        </section>
     )
+}
+
+function Grandchild() {
+    return(
+        <div className="grandchild">
+            <Button />
+        </div>
+)
+}
+
+function Button() {
+    const name = useContext(NameContext)
+    return <button>{name}</button>
 }
 
 export default App;
